@@ -1,0 +1,44 @@
+{
+  "name": "gvalfr35/omnipay-sherlock-lcl",
+  "type": "library",
+  "description": "LCL sherlock (SIPS v2) support for Omnipay payment processing library",
+  "keywords": [
+    "shell",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "purchase",
+    "lcl"
+  ],
+  "homepage": "https://github.com/GValFr35/omnipay-sherlock-lcl.git",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Valéry Gouleau",
+      "email": "v.gouleau@cyim.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": { "Omnipay\\Sherlock\\" : "src/" }
+  },
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3",
+        "squizlabs/php_codesniffer": "^3",
+        "phpro/grumphp": "^0.14.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0.x-dev"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    }
+}

@@ -14,9 +14,9 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
      *
      * @var string
      */
-    public $testEndpoint = 'https://payment-webinit.simu.Sherlock.com/paymentInit';
+    public $testEndpoint = 'https://sherlocks-payment-webinit-simu.secure.lcl.fr/paymentInit';
 
-    public $liveEndpoint = 'https://sherlocks-payment-webinit.secure.lcl.fr/paymentInit/';
+    public $liveEndpoint = 'https://sherlocks-payment-webinit.secure.lcl.fr/paymentInit';
 
     /**
      * sendData function. In this case, where the browser is to be directly it constructs and returns a response object

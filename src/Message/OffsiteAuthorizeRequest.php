@@ -62,17 +62,25 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
      */
     public function getTransactionData()
     {
-        return array
-        (
-            'data' => array(
-                'amount' => $this->getAmountInteger(),
-                'currencyCode' => $this->getCurrencyNumeric(),
-                'keyVersion' => $this->getKeyVersion(),
-                'merchantId' => $this->getMerchantID(),
-                'automaticResponseUrl' => $this->getNotifyUrl(),
-                'normalReturnUrl'=> $this->getReturnUrl(),
-                'transactionReference' => $this->getTransactionId(),
-            ),
+        $params = array(
+            'amount' => $this->getAmountInteger(),
+            'currencyCode' => $this->getCurrencyNumeric(),
+            'keyVersion' => $this->getKeyVersion(),
+            'merchantId' => $this->getMerchantID(),
+            'automaticResponseUrl' => $this->getNotifyUrl(),
+            'normalReturnUrl'=> $this->getReturnUrl(),
+            'transactionReference' => $this->getTransactionId(),
+        );
+        
+
+        if ($this->getS10TransactionRef()) {
+            $params['s10TransactionReference.s10TransactionId'] = $params['transactionReference'];
+            $params['s10TransactionReference.s10transactionIdDate'] = date('Ymd');
+            unset($params['transactionReference']);
+        }
+            
+        return array(
+            'data' => $params
         );
     }
 

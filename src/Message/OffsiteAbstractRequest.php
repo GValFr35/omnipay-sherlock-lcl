@@ -90,7 +90,7 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
      */
     public function setKeyVersion($value)
     {
-        $this->setParameter('key_version', $value);
+        return $this->setParameter('key_version', $value);
     }
 
     public function getTransactionType()
@@ -106,5 +106,15 @@ abstract class OffsiteAbstractRequest extends \Omnipay\Common\Message\AbstractRe
     public function getSeal($data)
     {
         return hash('sha256', $data . $this->getSecretKey());
+    }
+    
+    public function getS10TransactionRef()
+    {
+        return $this->getParameter('s10TransactionRef');
+    }
+
+    public function setS10TransactionRef($value)
+    {
+        return $this->setParameter('s10TransactionRef', filter_var($value, FILTER_VALIDATE_BOOLEAN));
     }
 }

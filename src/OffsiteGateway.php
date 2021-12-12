@@ -33,6 +33,7 @@ class OffsiteGateway extends AbstractGateway
           'secret_key' => '',
           'testMode' => false,
           'key_version' => 2,
+          's10TransactionRef' => false,
         );
     }
 
@@ -132,4 +133,23 @@ class OffsiteGateway extends AbstractGateway
     {
         return $this->setParameter('key_version', $value);
     }
+
+    /**
+     * @return bool
+     */
+    public function getS10TransactionRef()
+    {
+        return $this->getParameter('s10TransactionRef');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return OffsiteGateway
+     */
+    public function setS10TransactionRef($value)
+    {   
+        return $this->setParameter('s10TransactionRef', filter_var($value, FILTER_VALIDATE_BOOLEAN));
+    }
+
 }

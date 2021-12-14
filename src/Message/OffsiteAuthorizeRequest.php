@@ -69,12 +69,11 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
             'merchantId' => $this->getMerchantID(),
             'automaticResponseUrl' => $this->getNotifyUrl(),
             'normalReturnUrl'=> $this->getReturnUrl(),
-            'transactionReference' => $this->getTransactionId(),
+            'transactionReference' => $this->getTransactionId(), //N35 sips2.0
         );
-        
 
         if ($this->getS10TransactionRef()) {
-            $params['s10TransactionReference.s10TransactionId'] = $params['transactionReference'];
+            $params['s10TransactionReference.s10TransactionId'] = substr($params['transactionReference'], -6); //N6 sips1.0
             $params['s10TransactionReference.s10transactionIdDate'] = date('Ymd');
             unset($params['transactionReference']);
         }

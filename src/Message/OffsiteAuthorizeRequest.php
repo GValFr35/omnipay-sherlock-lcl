@@ -77,7 +77,9 @@ class OffsiteAuthorizeRequest extends OffsiteAbstractRequest
             $params['s10TransactionReference.s10transactionIdDate'] = date('Ymd');
             unset($params['transactionReference']);
         }
-            
+
+        $params['customerId'] = substr($this->getCard()->getEmail(),0,18); //AN19
+
         return array(
             'data' => $params
         );
